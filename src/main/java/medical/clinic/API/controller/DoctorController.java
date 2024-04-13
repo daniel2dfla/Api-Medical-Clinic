@@ -6,10 +6,12 @@ import medical.clinic.API.dto.doctor.ListDataDoctorDTO;
 import medical.clinic.API.entity.Doctor;
 import medical.clinic.API.interfaces.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("doctors")
@@ -26,7 +28,7 @@ public class DoctorController {
     }
 
     @GetMapping
-    public List<ListDataDoctorDTO> listar(){
-        return repository.findAll().stream().map(ListDataDoctorDTO::new).toList();
+    public Page<ListDataDoctorDTO> listar(@PageableDefault(size = 10, sort = {"name"}) Pageable pagination){
+        return repository.findAll(pagination).map(ListDataDoctorDTO::new);
     }
 }
