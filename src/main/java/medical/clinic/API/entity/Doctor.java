@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import medical.clinic.API.dto.doctor.DoctorDTO;
 import medical.clinic.API.dto.doctor.SpecialtyDTO;
+import medical.clinic.API.dto.doctor.UpdateDataDoctorDTO;
 
 @Table(name = "doctors")
 @Entity(name = "Doctor")
@@ -29,12 +30,31 @@ public class Doctor {
     @Embedded
     private Address address;
 
+    private Boolean active;
+
     public Doctor(DoctorDTO data) {
+        this.active = true;
         this.name = data.name();
         this.email = data.email();
         this.cellphone = data.cellphone();
         this.crm = data.crm();
         this.specialty = data.specialty();
         this.address = new Address(data.address());
+    }
+
+    public void updateData(UpdateDataDoctorDTO data) {
+        if(data.name() != null){
+            this.name = data.name();
+        }
+        if(data.cellphone() != null){
+            this.cellphone = data.cellphone();
+        }
+        if(data.address() != null){
+            this.address.updateDataAddress(data.address());
+        }
+    }
+
+    public void disable() {
+        this.active = false;
     }
 }

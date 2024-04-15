@@ -3,6 +3,7 @@ package medical.clinic.API.dto.doctor;
 import medical.clinic.API.entity.Doctor;
 
 public record ListDataDoctorDTO(
+        Long id,
         String name,
         String email,
         String crm,
@@ -10,6 +11,6 @@ public record ListDataDoctorDTO(
 
 ) {
     public ListDataDoctorDTO(Doctor doctor){
-        this(doctor.getName(), doctor.getEmail(), doctor.getCrm(), doctor.getSpecialty());
+        this(doctor.getId(), doctor.getName(), doctor.getEmail(), doctor.getCrm(), doctor.getSpecialty());
     }
 }
