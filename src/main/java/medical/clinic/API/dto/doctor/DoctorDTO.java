@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import medical.clinic.API.dto.address.addressDataDTO;
+import medical.clinic.API.dto.address.AddressDataDTO;
 
 public record DoctorDTO(
         @NotBlank
@@ -27,6 +27,6 @@ public record DoctorDTO(
 
         @NotNull
         @Valid
-        addressDataDTO address
+        AddressDataDTO address
 ) {
 }

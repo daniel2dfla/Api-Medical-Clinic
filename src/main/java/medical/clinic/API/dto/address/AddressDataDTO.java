@@ -3,7 +3,7 @@ package medical.clinic.API.dto.address;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record addressDataDTO(
+public record AddressDataDTO(
         @NotBlank
         String place,
 
