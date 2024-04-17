@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Pattern;
 import medical.clinic.API.dto.address.AddressDataDTO;
 
 public record DoctorDTO(
-        @NotBlank
+        @NotBlank(message = "Name is required")
         String name,
 
         @NotBlank
