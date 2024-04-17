@@ -4,7 +4,7 @@ import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import medical.clinic.API.dto.address.addressDataDTO;
+import medical.clinic.API.dto.address.AddressDataDTO;
 
 @Embeddable
 @Getter
@@ -19,7 +19,7 @@ public class Address {
     private String number;
     private String complement;
 
-    public Address(addressDataDTO data) {
+    public Address(AddressDataDTO data) {
         this.place = data.place();
         this.neighborhood = data.neighborhood();
         this.zipcode = data.zipcode();
@@ -29,7 +29,7 @@ public class Address {
         this.complement = data.complement();
     }
 
-    public void updateDataAddress(addressDataDTO data) {
+    public void updateDataAddress(AddressDataDTO data) {
         if(data.place() != null){
             this.place = data.place();
         }
