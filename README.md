@@ -1,1 +1,3 @@
 # Api-Medical-Clinic
+
+Api em construção , assim que finalizada, será documentada usando o Swagger...
