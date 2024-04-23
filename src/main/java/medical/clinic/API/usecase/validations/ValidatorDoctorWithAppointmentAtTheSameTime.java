@@ -12,15 +12,10 @@ public class ValidatorDoctorWithAppointmentAtTheSameTime implements ValidatorApp
     @Autowired
     private AppointmentRepository repository;
 
-    public void validator(DataAppointmentDTO data){
+    public void validation(DataAppointmentDTO data){
         var doctorWithAppointmentAtTheSameTime = repository.existsByDoctorIdAndDateAndReasonCancelattionIsNull(data.idDoctor(), data.date());
         if (doctorWithAppointmentAtTheSameTime){
             throw new ValidationException("The doctor already has another appointment scheduled at the same time.");
         }
-    }
-
-    @Override
-    public void validation(DataAppointmentDTO data) {
-
     }
 }

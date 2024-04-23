@@ -2,13 +2,15 @@ package medical.clinic.API.usecase.validations;
 
 import medical.clinic.API.dto.appointment.DataAppointmentDTO;
 import medical.clinic.API.infra.exception.ValidationException;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class ValidatorTimeAdvance {
-    public void validator(DataAppointmentDTO data){
+@Component
+public class ValidatorTimeAdvance implements ValidatorAppointmentScheduling {
+    public void validation(DataAppointmentDTO data){
        var dateAppointment = data.date();
        var now = LocalDateTime.now();
        var differenceOfMinutes = Duration.between(now, dateAppointment).toMinutes();

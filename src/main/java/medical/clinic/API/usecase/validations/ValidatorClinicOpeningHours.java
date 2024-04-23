@@ -2,11 +2,13 @@ package medical.clinic.API.usecase.validations;
 
 import medical.clinic.API.dto.appointment.DataAppointmentDTO;
 import medical.clinic.API.infra.exception.ValidationException;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 
+@Component
 public class ValidatorClinicOpeningHours {
-    public void validator(DataAppointmentDTO data){
+    public void validation(DataAppointmentDTO data){
         var dateAppointment = data.date();
 
         var sunday = dateAppointment.getDayOfWeek().equals(DayOfWeek.SUNDAY);

@@ -3,12 +3,16 @@ package medical.clinic.API.usecase.validations;
 import medical.clinic.API.dto.appointment.DataAppointmentDTO;
 import medical.clinic.API.infra.exception.ValidationException;
 import medical.clinic.API.interfaces.DoctorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidatorActiveDoctor {
+@Component
+public class ValidatorActiveDoctor implements ValidatorAppointmentScheduling{
 
+    @Autowired
     private DoctorRepository doctorRepository;
 
-    private void validation(DataAppointmentDTO data){
+    public void validation(DataAppointmentDTO data){
         if(data.idDoctor() == null){
             return;
         }
