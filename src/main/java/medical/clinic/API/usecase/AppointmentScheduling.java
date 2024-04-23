@@ -9,8 +9,12 @@ import medical.clinic.API.infra.exception.ValidationException;
 import medical.clinic.API.interfaces.AppointmentRepository;
 import medical.clinic.API.interfaces.DoctorRepository;
 import medical.clinic.API.interfaces.PatientRepository;
+import medical.clinic.API.usecase.validations.ValidatorAppointmentScheduling;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AppointmentScheduling {
@@ -24,7 +28,10 @@ public class AppointmentScheduling {
     @Autowired
     private PatientRepository patientRepository;
 
-    public void appointment(DataAppointmentDTO data){
+    @Autowired
+    private List<ValidatorAppointmentScheduling> validators;
+
+    public void appointment(@NotNull DataAppointmentDTO data){
 
         if(!patientRepository.existsById(data.idPatient())){
             throw new ValidationException("Patient ID does not exist");
@@ -33,6 +40,8 @@ public class AppointmentScheduling {
         if(data.idDoctor() != null && !doctorRepository.existsById(data.idDoctor())){
             throw new ValidationException("Doctor ID does not exist");
         }
+
+        validators.forEach(v -> v.validation(data));
 
         var patient = patientRepository.getReferenceById(data.idPatient());
         var doctor = chooseDoctor(data);
