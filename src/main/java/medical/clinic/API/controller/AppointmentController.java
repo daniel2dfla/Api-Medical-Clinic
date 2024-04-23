@@ -5,6 +5,7 @@ import medical.clinic.API.dto.appointment.DataAppointmentDTO;
 import medical.clinic.API.dto.appointment.DataAppointmentQueryDTO;
 import medical.clinic.API.dto.appointment.ConsultationCancellationDataDTO;
 import medical.clinic.API.usecase.AppointmentScheduling;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("appointment")
 public class AppointmentController {
 
+    @Autowired
     private AppointmentScheduling appointmentScheduling;
 
     @PostMapping
     @Transactional
     public ResponseEntity appointment(@RequestBody @Valid DataAppointmentDTO data){
-        appointmentScheduling.appointment(data);
-        return ResponseEntity.ok(new DataAppointmentQueryDTO(null, null, null, null));
+        var dto = appointmentScheduling.appointment(data);
+        return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping
