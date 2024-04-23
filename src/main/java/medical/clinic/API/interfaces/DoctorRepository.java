@@ -23,6 +23,10 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
                 select c.doctor.id from Appointment c
                 where
                 c.date = :date
+                
+                and
+                
+                c.cancellationReasonDTO is null
             )
             order by rand()
             limit 1

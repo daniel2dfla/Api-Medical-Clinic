@@ -1,14 +1,14 @@
-package medical.clinic.API.usecase.validations;
+package medical.clinic.API.usecase.validations.appointment;
 
 import medical.clinic.API.dto.appointment.DataAppointmentDTO;
 import medical.clinic.API.infra.exception.ValidationException;
+import medical.clinic.API.usecase.validations.appointment.ValidatorAppointmentScheduling;
 import org.springframework.stereotype.Component;
 
-import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-@Component
+@Component("ValidatorScheduleAdvanceSchedule")
 public class ValidatorTimeAdvance implements ValidatorAppointmentScheduling {
     public void validation(DataAppointmentDTO data){
        var dateAppointment = data.date();

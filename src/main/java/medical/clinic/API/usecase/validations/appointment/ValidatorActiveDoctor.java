@@ -1,4 +1,4 @@
-package medical.clinic.API.usecase.validations;
+package medical.clinic.API.usecase.validations.appointment;
 
 import medical.clinic.API.dto.appointment.DataAppointmentDTO;
 import medical.clinic.API.infra.exception.ValidationException;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ValidatorActiveDoctor implements ValidatorAppointmentScheduling{
+public class ValidatorActiveDoctor implements ValidatorAppointmentScheduling {
 
     @Autowired
     private DoctorRepository doctorRepository;

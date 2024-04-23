@@ -1,4 +1,4 @@
-package medical.clinic.API.usecase.validations;
+package medical.clinic.API.usecase.validations.appointment;
 
 import medical.clinic.API.dto.appointment.DataAppointmentDTO;
 import medical.clinic.API.infra.exception.ValidationException;
