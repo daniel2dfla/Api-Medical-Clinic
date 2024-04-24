@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Pattern;
 import medical.clinic.API.dto.address.AddressDataDTO;
 
 public record PatientDTO(
-        Boolean active,
 
         @NotBlank
         String name,
